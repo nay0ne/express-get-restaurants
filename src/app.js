@@ -9,7 +9,7 @@ app.get('/restaurants', async (req, res) => {
         const restaurants = await Restaurant.findAll({});
         res.json(restaurants);
     } catch(error) {
-        next(error)
+        next(error);
     }
 });
 
