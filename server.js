@@ -5,7 +5,7 @@ const port = 3000;
 //TODO: Create your GET Request Route Below: 
 
 
-app.listen(port, () => {
-    db.sync();
+app.listen(port, async () => {
+    await db.sync();
     console.log(`Listening at http://localhost:${port}/restaurants`);
 })
