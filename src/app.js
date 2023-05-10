@@ -18,8 +18,8 @@ app.get('/restaurants', async (req, res, next) => {
 //  get particular restaurant- Express Restaurantds pt 2
 app.get('/restaurants/:id', async (req, res, next) => {
    try { 
-        const { id } = req.params;
-        let gimme = await Restaurant.findByPk(id);
+        const id = req.params.id;
+        gimme = await Restaurant.findByPk(id);
         res.json(gimme);
     } catch(error) {
         next(error);
