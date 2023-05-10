@@ -12,7 +12,12 @@ app.get('/restaurants', async (req, res) => {
         next(error);
     }
 });
-
+//  get particular restaurant
+app.get('/restaurants/:id', async (req, res) => {
+    const id = req.params.id;
+    gimme = await Restaurant.findByPk(id);
+    res.json(gimme);
+});
 
 
 module.exports = app;
