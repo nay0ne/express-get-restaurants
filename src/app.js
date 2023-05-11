@@ -3,7 +3,7 @@ const app = express();
 const Restaurant = require("../models/index")
 const db = require("../db/connection");
 //  to parse request body containing JSON objs-
-app.use(express.json());
+// app.use(express.json());
 // to parse request body with URL encoded values-
 app.use(express.urlencoded({extended:true}));
 //TODO: Create your GET Request Route Below: 
@@ -15,15 +15,11 @@ app.get('/restaurants', async (req, res, next) => {
         next(error);
     }
 });
-//  get particular restaurant- Express Restaurantds pt 2
-app.get('/restaurants/:id', async (req, res, next) => {
-   try { 
+//  get specific restaurant- Express Restaurantds pt 2
+app.get('/restaurants/:id', async (req, res) => {
         const id = req.params.id;
         gimme = await Restaurant.findByPk(id);
         res.json(gimme);
-    } catch(error) {
-        next(error);
-    }
 });
 
 // add new restaurant
