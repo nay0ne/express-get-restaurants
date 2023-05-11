@@ -17,9 +17,13 @@ app.get('/restaurants', async (req, res, next) => {
 });
 //  get specific restaurant- Express Restaurantds pt 2
 app.get('/restaurants/:id', async (req, res) => {
-        const id = req.params.id;
-        gimme = await Restaurant.findByPk(id);
-        res.json(gimme);
+        try {
+            const id = req.params.id;
+            gimme = await Restaurant.findByPk(id);
+            res.json(gimme);
+        } catch(error) {
+            next(error);
+        }
 });
 
 // add new restaurant
